@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Activity 1 - Wind Energy | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .diagram-container {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .diagram-svg {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .diagram-svg:hover {
+      transform: scale(1.02);
+    }
+    .explanation {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+      line-height: 1.8;
+    }
+    .explanation h2 {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .spec-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent);
+    }
+    .spec-card h3 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent);
+      color: #1e1e2f;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(8, 209, 169, 0.3);
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      width: 95vw;
+      height: 95vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content svg {
+      width: 100%;
+      height: 100%;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+    .close-modal:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">&nbsp&nbsp&nbsp&nbsp&nbsp☀️🔋</div>
+      <div>
+        <div class="title">Clean & Green Energy</div>
+        <div class="subtitle">-SANCHIT VASHISTH</div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav class="side-nav" id="side-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="activity1.html" class="nav-link active">Activity 1</a>
+      <a href="activity2.html" class="nav-link">Activity 2</a>
+      <a href="activity3.html" class="nav-link">Activity 3</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <section class="hero card">
+      <h1>🌬️ Activity 1: Wind Energy Conversion System</h1>
+      <p class="lead">A comprehensive offshore wind turbine system designed for coastal energy generation with grid integration.</p>
+    </section>
+
+    <section class="diagram-container">
+      <h2 style="color: var(--accent); margin-bottom: 20px;">System Architecture</h2>
+      <svg class="diagram-svg" id="main-diagram" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <defs>
+          <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0f1a2f;stop-opacity:1" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        
+        <rect width="900" height="500" fill="url(#skyGrad)"/>
+        
+        <!-- Wind Source -->
+        <g id="wind-source">
+          <text x="80" y="80" fill="#08d1a9" font-size="18" font-weight="bold">WIND ENERGY</text>
+          <text x="80" y="105" fill="#fff" font-size="12">(Kinetic Energy)</text>
+          <!-- Animated wind lines -->
+          <line x1="20" y1="130" x2="140" y2="130" stroke="#08d1a9" stroke-width="2" opacity="0.6">
+            <animate attributeName="x1" from="0" to="140" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="x2" from="20" to="160" dur="2s" repeatCount="indefinite"/>
+          </line>
+          <line x1="20" y1="150" x2="140" y2="150" stroke="#08d1a9" stroke-width="2" opacity="0.4">
+            <animate attributeName="x1" from="0" to="140" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="x2" from="20" to="160" dur="2.5s" repeatCount="indefinite"/>
+          </line>
+          <line x1="20" y1="170" x2="140" y2="170" stroke="#08d1a9" stroke-width="2" opacity="0.5">
+            <animate attributeName="x1" from="0" to="140" dur="2.2s" repeatCount="indefinite"/>
+            <animate attributeName="x2" from="20" to="160" dur="2.2s" repeatCount="indefinite"/>
+          </line>
+        </g>
+
+        <!-- Arrow 1 -->
+        <path d="M 160 150 L 240 150" stroke="#08d1a9" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#08d1a9" />
+          </marker>
+        </defs>
+
+        <!-- Wind Turbine -->
+        <g id="turbine">
+          <rect x="240" y="100" width="160" height="100" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="320" y="130" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">WIND TURBINE</text>
+          <text x="320" y="150" text-anchor="middle" fill="#fff" font-size="11">Rotor Blades</text>
+          <text x="320" y="165" text-anchor="middle" fill="#fff" font-size="11">Gearbox</text>
+          <text x="320" y="180" text-anchor="middle" fill="#fff" font-size="11">Mechanical → Rotational</text>
+          
+          <!-- Rotating blades animation -->
+          <g transform="translate(360, 150)">
+            <line x1="0" y1="0" x2="0" y2="-25" stroke="#08d1a9" stroke-width="3">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+            </line>
+            <line x1="0" y1="0" x2="22" y2="12" stroke="#08d1a9" stroke-width="3">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+            </line>
+            <line x1="0" y1="0" x2="-22" y2="12" stroke="#08d1a9" stroke-width="3">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/>
+            </line>
+          </g>
+        </g>
+
+        <!-- Arrow 2 -->
+        <path d="M 400 150 L 480 150" stroke="#08d1a9" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+
+        <!-- Generator -->
+        <g id="generator">
+          <rect x="480" y="110" width="140" height="80" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="550" y="140" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">GENERATOR</text>
+          <text x="550" y="160" text-anchor="middle" fill="#fff" font-size="11">Electromagnetic</text>
+          <text x="550" y="175" text-anchor="middle" fill="#fff" font-size="11">Induction</text>
+          
+          <!-- Electric spark animation -->
+          <circle cx="600" cy="150" r="3" fill="#eeff00" filter="url(#glow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Arrow 3 -->
+        <path d="M 620 150 L 680 150" stroke="#08d1a9" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+
+        <!-- Power Output -->
+        <g id="output">
+          <rect x="680" y="100" width="180" height="100" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="770" y="125" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">AC ELECTRICITY</text>
+          <text x="770" y="145" text-anchor="middle" fill="#fff" font-size="11">3-Phase Power</text>
+          <text x="770" y="165" text-anchor="middle" fill="#fff" font-size="11">Output: 5 MW</text>
+          <text x="770" y="185" text-anchor="middle" fill="#fff" font-size="11">Grid Integration</text>
+        </g>
+
+        <!-- Bottom Flow -->
+        <g id="subsystems">
+          <rect x="240" y="280" width="620" height="140" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="#08d1a9" stroke-width="2" stroke-dasharray="5,5"/>
+          <text x="550" y="305" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">SUPPORTING SYSTEMS</text>
+          
+          <!-- Control System -->
+          <g>
+            <rect x="260" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="320" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">CONTROL</text>
+            <text x="320" y="360" text-anchor="middle" fill="#fff" font-size="10">Yaw System</text>
+            <text x="320" y="375" text-anchor="middle" fill="#fff" font-size="10">Pitch Control</text>
+            <text x="320" y="390" text-anchor="middle" fill="#fff" font-size="10">SCADA</text>
+          </g>
+
+          <!-- Transformer -->
+          <g>
+            <rect x="410" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="470" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">TRANSFORMER</text>
+            <text x="470" y="360" text-anchor="middle" fill="#fff" font-size="10">690V → 33kV</text>
+            <text x="470" y="375" text-anchor="middle" fill="#fff" font-size="10">Step-up</text>
+            <text x="470" y="390" text-anchor="middle" fill="#fff" font-size="10">Voltage</text>
+          </g>
+
+          <!-- Power Conditioning -->
+          <g>
+            <rect x="560" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="620" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">CONVERTER</text>
+            <text x="620" y="360" text-anchor="middle" fill="#fff" font-size="10">Power Factor</text>
+            <text x="620" y="375" text-anchor="middle" fill="#fff" font-size="10">Correction</text>
+            <text x="620" y="390" text-anchor="middle" fill="#fff" font-size="10">Grid Sync</text>
+          </g>
+
+          <!-- Grid Connection -->
+          <g>
+            <rect x="710" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="770" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">GRID</text>
+            <text x="770" y="360" text-anchor="middle" fill="#fff" font-size="10">Transmission</text>
+            <text x="770" y="375" text-anchor="middle" fill="#fff" font-size="10">Distribution</text>
+            <text x="770" y="390" text-anchor="middle" fill="#fff" font-size="10">to Consumers</text>
+          </g>
+        </g>
+
+        <!-- Connection arrows -->
+        <path d="M 320 240 L 320 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 470 240 L 470 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 620 240 L 620 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 770 200 L 770 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+
+        <!-- Title -->
+        <text x="450" y="470" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">Offshore Wind Energy Conversion System - Block Diagram</text>
+      </svg>
+      <p style="margin-top: 15px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">Click diagram to view full screen</p>
+    </section>
+
+    <section class="explanation">
+      <h2>System Explanation</h2>
+      
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">🌬️ Source of Energy</h3>
+      <p>
+        Kinetic energy from offshore winds (7-10 m/s) with 35-40% capacity factor. Converts atmospheric circulation energy.
+      </p>
+
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">⚙️ Conversion Process</h3>
+      <p>
+        Wind rotates 60-80m blades at 15-20 RPM. Gearbox increases to 1500-1800 RPM. Electromagnetic generator converts rotational energy to AC electricity via induction.
+      </p>
+
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">⚡ Output & Utilization</h3>
+      <p>
+        5 MW three-phase AC at 690V, stepped to 33kV for grid transmission. 15-25 GWh/year at 40-45% efficiency.
+      </p>
+
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">🌍 Real-World Application</h3>
+      <p>
+        Powers 4,000 homes annually, reduces 12,000 tons CO₂/year. Ideal for coastal nations seeking energy independence with minimal land use.
+      </p>
+    </section>
+
+    <section class="specs-grid">
+      <div class="spec-card">
+        <h3>⚡ Power Output</h3>
+        <p>5 MW rated capacity<br>15-25 GWh/year production</p>
+      </div>
+      <div class="spec-card">
+        <h3>🌊 Location</h3>
+        <p>Offshore installation<br>15-30km from coast</p>
+      </div>
+      <div class="spec-card">
+        <h3>🔧 Efficiency</h3>
+        <p>40-45% energy conversion<br>Capacity factor: 35-40%</p>
+      </div>
+      <div class="spec-card">
+        <h3>🏠 Impact</h3>
+        <p>Powers ~4,000 homes<br>Reduces 12,000 tons CO₂/year</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Sanchit Vashisth | Activity 1: Wind Energy System
+  </footer>
+
+  <!-- Modal for full-screen diagram -->
+  <div id="diagram-modal" class="modal">
+    <span class="close-modal" id="close-modal">&times;</span>
+    <div class="modal-content">
+      <svg class="diagram-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0f1a2f;stop-opacity:1" />
+          </linearGradient>
+          <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#08d1a9" />
+          </marker>
+        </defs>
+        <rect width="900" height="500" fill="url(#skyGrad2)"/>
+        <g id="wind-source2">
+          <text x="80" y="80" fill="#08d1a9" font-size="18" font-weight="bold">WIND ENERGY</text>
+          <text x="80" y="105" fill="#fff" font-size="12">(Kinetic Energy)</text>
+        </g>
+        <path d="M 160 150 L 240 150" stroke="#08d1a9" stroke-width="3" fill="none" marker-end="url(#arrowhead2)"/>
+        <g id="turbine2">
+          <rect x="240" y="100" width="160" height="100" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="320" y="130" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">WIND TURBINE</text>
+          <text x="320" y="150" text-anchor="middle" fill="#fff" font-size="11">Rotor Blades</text>
+          <text x="320" y="165" text-anchor="middle" fill="#fff" font-size="11">Gearbox</text>
+          <text x="320" y="180" text-anchor="middle" fill="#fff" font-size="11">Mechanical → Rotational</text>
+        </g>
+        <path d="M 400 150 L 480 150" stroke="#08d1a9" stroke-width="3" fill="none" marker-end="url(#arrowhead2)"/>
+        <g id="generator2">
+          <rect x="480" y="110" width="140" height="80" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="550" y="140" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">GENERATOR</text>
+          <text x="550" y="160" text-anchor="middle" fill="#fff" font-size="11">Electromagnetic</text>
+          <text x="550" y="175" text-anchor="middle" fill="#fff" font-size="11">Induction</text>
+        </g>
+        <path d="M 620 150 L 680 150" stroke="#08d1a9" stroke-width="3" fill="none" marker-end="url(#arrowhead2)"/>
+        <g id="output2">
+          <rect x="680" y="100" width="180" height="100" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="770" y="125" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">AC ELECTRICITY</text>
+          <text x="770" y="145" text-anchor="middle" fill="#fff" font-size="11">3-Phase Power</text>
+          <text x="770" y="165" text-anchor="middle" fill="#fff" font-size="11">Output: 5 MW</text>
+          <text x="770" y="185" text-anchor="middle" fill="#fff" font-size="11">Grid Integration</text>
+        </g>
+        <g id="subsystems2">
+          <rect x="240" y="280" width="620" height="140" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="#08d1a9" stroke-width="2" stroke-dasharray="5,5"/>
+          <text x="550" y="305" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">SUPPORTING SYSTEMS</text>
+          <rect x="260" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="320" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">CONTROL</text>
+          <text x="320" y="360" text-anchor="middle" fill="#fff" font-size="10">Yaw System</text>
+          <text x="320" y="375" text-anchor="middle" fill="#fff" font-size="10">Pitch Control</text>
+          <text x="320" y="390" text-anchor="middle" fill="#fff" font-size="10">SCADA</text>
+          <rect x="410" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="470" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">TRANSFORMER</text>
+          <text x="470" y="360" text-anchor="middle" fill="#fff" font-size="10">690V → 33kV</text>
+          <text x="470" y="375" text-anchor="middle" fill="#fff" font-size="10">Step-up</text>
+          <text x="470" y="390" text-anchor="middle" fill="#fff" font-size="10">Voltage</text>
+          <rect x="560" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="620" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">CONVERTER</text>
+          <text x="620" y="360" text-anchor="middle" fill="#fff" font-size="10">Power Factor</text>
+          <text x="620" y="375" text-anchor="middle" fill="#fff" font-size="10">Correction</text>
+          <text x="620" y="390" text-anchor="middle" fill="#fff" font-size="10">Grid Sync</text>
+          <rect x="710" y="320" width="120" height="80" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="770" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">GRID</text>
+          <text x="770" y="360" text-anchor="middle" fill="#fff" font-size="10">Transmission</text>
+          <text x="770" y="375" text-anchor="middle" fill="#fff" font-size="10">Distribution</text>
+          <text x="770" y="390" text-anchor="middle" fill="#fff" font-size="10">to Consumers</text>
+        </g>
+        <path d="M 320 240 L 320 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 470 240 L 470 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 620 240 L 620 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 770 200 L 770 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <text x="450" y="470" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">Offshore Wind Energy Conversion System - Block Diagram</text>
+      </svg>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Modal functionality
+    const diagram = document.getElementById('main-diagram');
+    const modal = document.getElementById('diagram-modal');
+    const closeModal = document.getElementById('close-modal');
+
+    diagram.addEventListener('click', () => {
+      modal.classList.add('active');
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

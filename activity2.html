@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Activity 2 - Biomass Energy | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .diagram-container {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .diagram-svg {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .diagram-svg:hover {
+      transform: scale(1.02);
+    }
+    .explanation {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 30px 0;
+      line-height: 1.8;
+    }
+    .explanation h2 {
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .spec-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid var(--accent);
+    }
+    .spec-card h3 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .back-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent);
+      color: #1e1e2f;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(8, 209, 169, 0.3);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      width: 95vw;
+      height: 95vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content svg {
+      width: 100%;
+      height: 100%;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+    .close-modal:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">&nbsp&nbsp&nbsp&nbsp&nbsp☀️🔋</div>
+      <div>
+        <div class="title">Clean & Green Energy</div>
+        <div class="subtitle">-SANCHIT VASHISTH</div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav class="side-nav" id="side-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="activity1.html" class="nav-link">Activity 1</a>
+      <a href="activity2.html" class="nav-link active">Activity 2</a>
+      <a href="activity3.html" class="nav-link">Activity 3</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <section class="hero card">
+      <h1>🌾 Activity 2: Biomass Gasification Power Plant</h1>
+      <p class="lead">Agricultural waste-to-energy conversion system using advanced gasification technology for rural electrification.</p>
+    </section>
+
+    <section class="diagram-container">
+      <h2 style="color: var(--accent); margin-bottom: 20px;">System Architecture</h2>
+      <svg class="diagram-svg" id="main-diagram" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="earthGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#2d4a2b;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1a2f19;stop-opacity:1" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#08d1a9" />
+          </marker>
+        </defs>
+        
+        <rect width="900" height="600" fill="url(#earthGrad)"/>
+
+        <!-- Title -->
+        <text x="450" y="35" text-anchor="middle" fill="#08d1a9" font-size="18" font-weight="bold">BIOMASS GASIFICATION COMBINED HEAT & POWER (CHP) SYSTEM</text>
+
+        <!-- Biomass Input -->
+        <g id="biomass-input">
+          <rect x="30" y="80" width="140" height="130" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="100" y="105" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">BIOMASS</text>
+          <text x="100" y="125" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">FEEDSTOCK</text>
+          <text x="100" y="145" text-anchor="middle" fill="#fff" font-size="11">• Agricultural waste</text>
+          <text x="100" y="160" text-anchor="middle" fill="#fff" font-size="11">• Rice husk</text>
+          <text x="100" y="175" text-anchor="middle" fill="#fff" font-size="11">• Wood chips</text>
+          <text x="100" y="190" text-anchor="middle" fill="#fff" font-size="11">• Sugarcane bagasse</text>
+          <text x="100" y="205" text-anchor="middle" fill="#eeff00" font-size="10">500 kg/hr input</text>
+          
+          <!-- Animated biomass particles -->
+          <circle cx="50" cy="110" r="3" fill="#8B4513">
+            <animate attributeName="cy" values="110;200;110" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="80" cy="130" r="3" fill="#A0522D">
+            <animate attributeName="cy" values="130;200;130" dur="2.3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="120" cy="120" r="3" fill="#8B4513">
+            <animate attributeName="cy" values="120;200;120" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Arrow 1 -->
+        <path d="M 170 145 L 230 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+        <!-- Gasifier (Main Process) -->
+        <g id="gasifier">
+          <rect x="230" y="80" width="160" height="130" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="3"/>
+          <text x="310" y="105" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">GASIFIER</text>
+          <text x="310" y="125" text-anchor="middle" fill="#fff" font-size="12">(800-1000°C)</text>
+          <text x="310" y="145" text-anchor="middle" fill="#fff" font-size="11">Partial Oxidation</text>
+          <text x="310" y="160" text-anchor="middle" fill="#fff" font-size="11">Pyrolysis Process</text>
+          <text x="310" y="175" text-anchor="middle" fill="#fff" font-size="11">Limited O₂ Supply</text>
+          <text x="310" y="195" text-anchor="middle" fill="#eeff00" font-size="10" font-weight="600">Chemical → Syngas</text>
+          
+          <!-- Animated flame -->
+          <g transform="translate(310, 130)">
+            <path d="M 0,-10 Q -5,-20 0,-30 Q 5,-20 0,-10" fill="#ff6b00" opacity="0.7">
+              <animate attributeName="opacity" values="0.5;0.9;0.5" dur="1s" repeatCount="indefinite"/>
+            </path>
+            <path d="M 0,-15 Q -3,-22 0,-28" fill="#ffff00" opacity="0.8">
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="0.8s" repeatCount="indefinite"/>
+            </path>
+          </g>
+        </g>
+
+        <!-- Arrow 2 -->
+        <path d="M 390 145 L 450 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <text x="420" y="135" text-anchor="middle" fill="#eeff00" font-size="10">Syngas</text>
+
+        <!-- Gas Cleaning -->
+        <g id="cleaning">
+          <rect x="450" y="100" width="130" height="90" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="515" y="125" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">GAS CLEANING</text>
+          <text x="515" y="145" text-anchor="middle" fill="#fff" font-size="11">Cyclone Filter</text>
+          <text x="515" y="160" text-anchor="middle" fill="#fff" font-size="11">Tar Removal</text>
+          <text x="515" y="175" text-anchor="middle" fill="#fff" font-size="11">Cooling</text>
+        </g>
+
+        <!-- Arrow 3 -->
+        <path d="M 580 145 L 630 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+        <!-- IC Engine/Generator -->
+        <g id="engine">
+          <rect x="630" y="90" width="140" height="110" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="700" y="115" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">IC ENGINE +</text>
+          <text x="700" y="135" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">GENERATOR</text>
+          <text x="700" y="155" text-anchor="middle" fill="#fff" font-size="11">Combustion</text>
+          <text x="700" y="170" text-anchor="middle" fill="#fff" font-size="11">Mechanical Energy</text>
+          <text x="700" y="185" text-anchor="middle" fill="#fff" font-size="11">Electricity Generation</text>
+          
+          <!-- Rotating gear animation -->
+          <g transform="translate(750, 145)">
+            <circle cx="0" cy="0" r="8" fill="none" stroke="#08d1a9" stroke-width="2"/>
+            <line x1="-6" y1="0" x2="6" y2="0" stroke="#08d1a9" stroke-width="2">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="0" y1="-6" x2="0" y2="6" stroke="#08d1a9" stroke-width="2">
+              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="2s" repeatCount="indefinite"/>
+            </line>
+          </g>
+        </g>
+
+        <!-- Arrow 4 to Electricity Output -->
+        <path d="M 770 145 L 820 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+        <!-- Electricity Output -->
+        <g id="output">
+          <rect x="820" y="110" width="70" height="70" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="855" y="135" text-anchor="middle" fill="#08d1a9" font-size="13" font-weight="bold">⚡</text>
+          <text x="855" y="155" text-anchor="middle" fill="#eeff00" font-size="12" font-weight="bold">250 kW</text>
+          <text x="855" y="172" text-anchor="middle" fill="#fff" font-size="10">Electricity</text>
+          
+          <!-- Electric pulse animation -->
+          <circle cx="855" cy="130" r="15" fill="none" stroke="#eeff00" stroke-width="2" opacity="0">
+            <animate attributeName="r" values="15;25;15" dur="1.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0;0.6;0" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Heat Recovery Section (Below main flow) -->
+        <g id="heat-recovery">
+          <rect x="230" y="280" width="660" height="140" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="#08d1a9" stroke-width="2" stroke-dasharray="5,5"/>
+          <text x="560" y="305" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">HEAT RECOVERY & BY-PRODUCTS</text>
+
+          <!-- Exhaust Heat Recovery -->
+          <g>
+            <rect x="250" y="325" width="130" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="315" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">HEAT EXCHANGER</text>
+            <text x="315" y="360" text-anchor="middle" fill="#fff" font-size="10">Exhaust → Hot Water</text>
+            <text x="315" y="375" text-anchor="middle" fill="#fff" font-size="10">Thermal Energy</text>
+            <text x="315" y="390" text-anchor="middle" fill="#eeff00" font-size="10">150 kW thermal</text>
+          </g>
+
+          <!-- Biochar -->
+          <g>
+            <rect x="410" y="325" width="120" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="470" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">BIOCHAR</text>
+            <text x="470" y="360" text-anchor="middle" fill="#fff" font-size="10">Solid Residue</text>
+            <text x="470" y="375" text-anchor="middle" fill="#fff" font-size="10">Soil Amendment</text>
+            <text x="470" y="390" text-anchor="middle" fill="#eeff00" font-size="10">50 kg/hr</text>
+          </g>
+
+          <!-- Ash Collection -->
+          <g>
+            <rect x="560" y="325" width="120" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="620" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">ASH</text>
+            <text x="620" y="360" text-anchor="middle" fill="#fff" font-size="10">Mineral Content</text>
+            <text x="620" y="375" text-anchor="middle" fill="#fff" font-size="10">Fertilizer Use</text>
+            <text x="620" y="390" text-anchor="middle" fill="#eeff00" font-size="10">10 kg/hr</text>
+          </g>
+
+          <!-- CHP Output -->
+          <g>
+            <rect x="710" y="325" width="150" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+            <text x="785" y="345" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">TOTAL CHP OUTPUT</text>
+            <text x="785" y="363" text-anchor="middle" fill="#eeff00" font-size="11" font-weight="600">Electrical: 250 kW</text>
+            <text x="785" y="378" text-anchor="middle" fill="#eeff00" font-size="11" font-weight="600">Thermal: 150 kW</text>
+            <text x="785" y="393" text-anchor="middle" fill="#fff" font-size="10">Efficiency: 65-75%</text>
+          </g>
+        </g>
+
+        <!-- Connecting lines from main process to heat recovery -->
+        <path d="M 310 210 L 310 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 700 200 L 315 280" stroke="#ff6b00" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <text x="400" y="250" fill="#ff6b00" font-size="10">Exhaust Heat</text>
+
+        <!-- Syngas Composition Info -->
+        <g id="syngas-info">
+          <rect x="30" y="470" width="200" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="130" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">SYNGAS COMPOSITION</text>
+          <text x="130" y="510" text-anchor="middle" fill="#fff" font-size="10">CO: 18-22%</text>
+          <text x="130" y="525" text-anchor="middle" fill="#fff" font-size="10">H₂: 15-19%</text>
+          <text x="130" y="540" text-anchor="middle" fill="#fff" font-size="10">CH₄: 2-4%</text>
+          <text x="130" y="555" text-anchor="middle" fill="#fff" font-size="10">N₂ + CO₂: Balance</text>
+        </g>
+
+        <!-- Applications -->
+        <g id="applications">
+          <rect x="260" y="470" width="200" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="360" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">APPLICATIONS</text>
+          <text x="360" y="510" text-anchor="middle" fill="#fff" font-size="10">✓ Rural Electrification</text>
+          <text x="360" y="525" text-anchor="middle" fill="#fff" font-size="10">✓ Rice Mills</text>
+          <text x="360" y="540" text-anchor="middle" fill="#fff" font-size="10">✓ Food Processing</text>
+          <text x="360" y="555" text-anchor="middle" fill="#fff" font-size="10">✓ District Heating</text>
+        </g>
+
+        <!-- Environmental Benefits -->
+        <g id="benefits">
+          <rect x="490" y="470" width="200" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="590" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">BENEFITS</text>
+          <text x="590" y="510" text-anchor="middle" fill="#fff" font-size="10">🌱 Carbon Neutral</text>
+          <text x="590" y="525" text-anchor="middle" fill="#fff" font-size="10">♻️ Waste Valorization</text>
+          <text x="590" y="540" text-anchor="middle" fill="#fff" font-size="10">💰 Cost-effective</text>
+          <text x="590" y="555" text-anchor="middle" fill="#fff" font-size="10">🔋 Energy Security</text>
+        </g>
+
+        <!-- Energy Flow -->
+        <g id="energy-flow">
+          <rect x="720" y="470" width="150" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="795" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">ENERGY BALANCE</text>
+          <text x="795" y="510" text-anchor="middle" fill="#eeff00" font-size="10">Input: 2000 kW</text>
+          <text x="795" y="525" text-anchor="middle" fill="#fff" font-size="10">(Chemical Energy)</text>
+          <text x="795" y="545" text-anchor="middle" fill="#eeff00" font-size="10">Output: 400 kW</text>
+          <text x="795" y="560" text-anchor="middle" fill="#fff" font-size="10">(Electrical + Thermal)</text>
+        </g>
+        
+      </svg>
+      
+      <p style="margin-top: 15px; color: rgba(255,255,255,0.7); font-size: 0.9rem;"></p>
+    </section>
+
+    <section class="explanation">
+      <h2>System Explanation</h2>
+      
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">🌾 Source of Energy</h3>
+      <p>
+        Agricultural waste (rice husk, bagasse, wood chips) containing 15-18 MJ/kg of stored solar energy.
+      </p>
+
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">⚙️ Conversion Process</h3>
+      <p>
+        Gasification at 800-1000°C produces syngas (CO, H₂, CH₄). Cleaned syngas combusts in IC engine, driving generator for electricity production.
+      </p>
+
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">⚡ Output & Utilization</h3>
+      <p>
+        250 kW electrical + 150 kW thermal (65-75% CHP efficiency). By-products: biochar for soil, ash for fertilizer.
+      </p>
+
+      <h3 style="color: var(--accent); margin-top: 20px; margin-bottom: 10px;">🌍 Real-World Application</h3>
+      <p>
+        Ideal for rural India, rice mills, and agricultural communities. Provides decentralized power, manages waste, carbon-neutral operation, and farmer revenue generation.
+      </p>
+    </section>
+
+    <section class="specs-grid">
+      <div class="spec-card">
+        <h3>⚡ Power Output</h3>
+        <p>250 kW electrical<br>150 kW thermal recovery</p>
+      </div>
+      <div class="spec-card">
+        <h3>🌾 Feedstock</h3>
+        <p>500 kg/hr biomass<br>Agricultural waste primarily</p>
+      </div>
+      <div class="spec-card">
+        <h3>🔧 Efficiency</h3>
+        <p>65-75% total CHP<br>45% electrical conversion</p>
+      </div>
+      <div class="spec-card">
+        <h3>🏭 Impact</h3>
+        <p>Powers 200+ homes<br>Reduces 800 tons CO₂/year</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Sanchit Vashisth | Activity 2: Biomass Energy System
+  </footer>
+
+  <div id="diagram-modal" class="modal">
+    <span class="close-modal" id="close-modal">&times;</span>
+    <div class="modal-content">
+      <svg class="diagram-svg" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+        <!-- Copy of the main SVG for modal view -->
+        <defs>
+          <linearGradient id="earthGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#2d4a2b;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1a2f19;stop-opacity:1" />
+          </linearGradient>
+          <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#08d1a9" />
+          </marker>
+        </defs>
+        <rect width="900" height="600" fill="url(#earthGrad2)"/>
+        <text x="450" y="35" text-anchor="middle" fill="#08d1a9" font-size="18" font-weight="bold">BIOMASS GASIFICATION COMBINED HEAT & POWER (CHP) SYSTEM</text>
+        <g id="biomass-input2">
+          <rect x="30" y="80" width="140" height="130" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="100" y="105" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">BIOMASS</text>
+          <text x="100" y="125" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">FEEDSTOCK</text>
+          <text x="100" y="145" text-anchor="middle" fill="#fff" font-size="11">• Agricultural waste</text>
+          <text x="100" y="160" text-anchor="middle" fill="#fff" font-size="11">• Rice husk</text>
+          <text x="100" y="175" text-anchor="middle" fill="#fff" font-size="11">• Wood chips</text>
+          <text x="100" y="190" text-anchor="middle" fill="#fff" font-size="11">• Sugarcane bagasse</text>
+          <text x="100" y="205" text-anchor="middle" fill="#eeff00" font-size="10">500 kg/hr input</text>
+        </g>
+        <path d="M 170 145 L 230 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead2)"/>
+        <g id="gasifier2">
+          <rect x="230" y="80" width="160" height="130" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="3"/>
+          <text x="310" y="105" text-anchor="middle" fill="#08d1a9" font-size="16" font-weight="bold">GASIFIER</text>
+          <text x="310" y="125" text-anchor="middle" fill="#fff" font-size="12">(800-1000°C)</text>
+          <text x="310" y="145" text-anchor="middle" fill="#fff" font-size="11">Partial Oxidation</text>
+          <text x="310" y="160" text-anchor="middle" fill="#fff" font-size="11">Pyrolysis Process</text>
+          <text x="310" y="175" text-anchor="middle" fill="#fff" font-size="11">Limited O₂ Supply</text>
+          <text x="310" y="195" text-anchor="middle" fill="#eeff00" font-size="10" font-weight="600">Chemical → Syngas</text>
+        </g>
+        <path d="M 390 145 L 450 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead2)"/>
+        <text x="420" y="135" text-anchor="middle" fill="#eeff00" font-size="10">Syngas</text>
+        <g id="cleaning2">
+          <rect x="450" y="100" width="130" height="90" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="515" y="125" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">GAS CLEANING</text>
+          <text x="515" y="145" text-anchor="middle" fill="#fff" font-size="11">Cyclone Filter</text>
+          <text x="515" y="160" text-anchor="middle" fill="#fff" font-size="11">Tar Removal</text>
+          <text x="515" y="175" text-anchor="middle" fill="#fff" font-size="11">Cooling</text>
+        </g>
+        <path d="M 580 145 L 630 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead2)"/>
+        <g id="engine2">
+          <rect x="630" y="90" width="140" height="110" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="700" y="115" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">IC ENGINE +</text>
+          <text x="700" y="135" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">GENERATOR</text>
+          <text x="700" y="155" text-anchor="middle" fill="#fff" font-size="11">Combustion</text>
+          <text x="700" y="170" text-anchor="middle" fill="#fff" font-size="11">Mechanical Energy</text>
+          <text x="700" y="185" text-anchor="middle" fill="#fff" font-size="11">Electricity Generation</text>
+        </g>
+        <path d="M 770 145 L 820 145" stroke="#08d1a9" stroke-width="3" marker-end="url(#arrowhead2)"/>
+        <g id="output2">
+          <rect x="820" y="110" width="70" height="70" rx="10" fill="rgba(8, 209, 169, 0.1)" stroke="#08d1a9" stroke-width="2"/>
+          <text x="855" y="135" text-anchor="middle" fill="#08d1a9" font-size="13" font-weight="bold">⚡</text>
+          <text x="855" y="155" text-anchor="middle" fill="#eeff00" font-size="12" font-weight="bold">250 kW</text>
+          <text x="855" y="172" text-anchor="middle" fill="#fff" font-size="10">Electricity</text>
+        </g>
+        <g id="heat-recovery2">
+          <rect x="230" y="280" width="660" height="140" rx="10" fill="rgba(255, 255, 255, 0.05)" stroke="#08d1a9" stroke-width="2" stroke-dasharray="5,5"/>
+          <text x="560" y="305" text-anchor="middle" fill="#08d1a9" font-size="14" font-weight="bold">HEAT RECOVERY & BY-PRODUCTS</text>
+          <rect x="250" y="325" width="130" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="315" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">HEAT EXCHANGER</text>
+          <text x="315" y="360" text-anchor="middle" fill="#fff" font-size="10">Exhaust → Hot Water</text>
+          <text x="315" y="375" text-anchor="middle" fill="#fff" font-size="10">Thermal Energy</text>
+          <text x="315" y="390" text-anchor="middle" fill="#eeff00" font-size="10">150 kW thermal</text>
+          <rect x="410" y="325" width="120" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="470" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">BIOCHAR</text>
+          <text x="470" y="360" text-anchor="middle" fill="#fff" font-size="10">Solid Residue</text>
+          <text x="470" y="375" text-anchor="middle" fill="#fff" font-size="10">Soil Amendment</text>
+          <text x="470" y="390" text-anchor="middle" fill="#eeff00" font-size="10">50 kg/hr</text>
+          <rect x="560" y="325" width="120" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="620" y="345" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">ASH</text>
+          <text x="620" y="360" text-anchor="middle" fill="#fff" font-size="10">Mineral Content</text>
+          <text x="620" y="375" text-anchor="middle" fill="#fff" font-size="10">Fertilizer Use</text>
+          <text x="620" y="390" text-anchor="middle" fill="#eeff00" font-size="10">10 kg/hr</text>
+          <rect x="710" y="325" width="150" height="75" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+          <text x="785" y="345" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">TOTAL CHP OUTPUT</text>
+          <text x="785" y="363" text-anchor="middle" fill="#eeff00" font-size="11" font-weight="600">Electrical: 250 kW</text>
+          <text x="785" y="378" text-anchor="middle" fill="#eeff00" font-size="11" font-weight="600">Thermal: 150 kW</text>
+          <text x="785" y="393" text-anchor="middle" fill="#fff" font-size="10">Efficiency: 65-75%</text>
+        </g>
+        <path d="M 310 210 L 310 280" stroke="#08d1a9" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <path d="M 700 200 L 315 280" stroke="#ff6b00" stroke-width="2" stroke-dasharray="3,3" opacity="0.5"/>
+        <text x="400" y="250" fill="#ff6b00" font-size="10">Exhaust Heat</text>
+        <rect x="30" y="470" width="200" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+        <text x="130" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">SYNGAS COMPOSITION</text>
+        <text x="130" y="510" text-anchor="middle" fill="#fff" font-size="10">CO: 18-22%</text>
+        <text x="130" y="525" text-anchor="middle" fill="#fff" font-size="10">H₂: 15-19%</text>
+        <text x="130" y="540" text-anchor="middle" fill="#fff" font-size="10">CH₄: 2-4%</text>
+        <text x="130" y="555" text-anchor="middle" fill="#fff" font-size="10">N₂ + CO₂: Balance</text>
+        <rect x="260" y="470" width="200" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+        <text x="360" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">APPLICATIONS</text>
+        <text x="360" y="510" text-anchor="middle" fill="#fff" font-size="10">✓ Rural Electrification</text>
+        <text x="360" y="525" text-anchor="middle" fill="#fff" font-size="10">✓ Rice Mills</text>
+        <text x="360" y="540" text-anchor="middle" fill="#fff" font-size="10">✓ Food Processing</text>
+        <text x="360" y="555" text-anchor="middle" fill="#fff" font-size="10">✓ District Heating</text>
+        <rect x="490" y="470" width="200" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+        <text x="590" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">BENEFITS</text>
+        <text x="590" y="510" text-anchor="middle" fill="#fff" font-size="10">🌱 Carbon Neutral</text>
+        <text x="590" y="525" text-anchor="middle" fill="#fff" font-size="10">♻️ Waste Valorization</text>
+        <text x="590" y="540" text-anchor="middle" fill="#fff" font-size="10">💰 Cost-effective</text>
+        <text x="590" y="555" text-anchor="middle" fill="#fff" font-size="10">🔋 Energy Security</text>
+        <rect x="720" y="470" width="150" height="95" rx="8" fill="rgba(8, 209, 169, 0.08)" stroke="#08d1a9" stroke-width="1.5"/>
+        <text x="795" y="490" text-anchor="middle" fill="#08d1a9" font-size="12" font-weight="bold">ENERGY BALANCE</text>
+        <text x="795" y="510" text-anchor="middle" fill="#eeff00" font-size="10">Input: 2000 kW</text>
+        <text x="795" y="525" text-anchor="middle" fill="#fff" font-size="10">(Chemical Energy)</text>
+        <text x="795" y="545" text-anchor="middle" fill="#eeff00" font-size="10">Output: 400 kW</text>
+        <text x="795" y="560" text-anchor="middle" fill="#fff" font-size="10">(Electrical + Thermal)</text>
+      </svg>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const diagram = document.getElementById('main-diagram');
+    const modal = document.getElementById('diagram-modal');
+    const closeModal = document.getElementById('close-modal');
+
+    diagram.addEventListener('click', () => {
+      modal.classList.add('active');
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

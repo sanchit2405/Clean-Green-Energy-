@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FT-IV Portfolio — Sanchit Vashisth</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- subtle particle canvas -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">&nbsp&nbsp&nbsp&nbsp&nbsp☀️🔋</div>
+      <div>
+        <div class="title">Clean & Green Energy</div>
+        <div class="subtitle">-SANCHIT VASHISTH</div>
+      </div>
+    </div>
+
+    <!-- Hamburger menu -->
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <!-- Sidebar nav -->
+    <nav class="side-nav" id="side-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="activity1.html" class="nav-link">Activity 1</a>
+      <a href="activity2.html" class="nav-link">Activity 2</a>
+      <a href="activity3.html" class="nav-link">Activity 3</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card glass">
+      <h1>Interactive Renewable Energy Portfolio</h1>
+      <p class="lead">Three engineering designs with clear block diagrams and professional explanations. Click any card below to view the full activity page.</p>
+      <div class="cards">
+        <article class="activity-card" onclick="location.href='activity1.html'">
+          <div class="icon">🏠</div>
+          <h3>Activity 1</h3>
+          <p>Rooftop Solar PV System — 5 kW</p>
+          <a class="cta" href="activity1.html" onclick="event.stopPropagation()">Open →</a>
+        </article>
+
+        <article class="activity-card" onclick="location.href='activity2.html'">
+          <div class="icon">🚜</div>
+          <h3>Activity 2</h3>
+          <p>Solar-Powered Irrigation Pump</p>
+          <a class="cta" href="activity2.html" onclick="event.stopPropagation()">Open →</a>
+        </article>
+
+        <article class="activity-card" onclick="location.href='activity3.html'">
+          <div class="icon">🏥</div>
+          <h3>Activity 3</h3>
+          <p>Hybrid Solar + Wind — Rural Clinic</p>
+          <a class="cta" href="activity3.html" onclick="event.stopPropagation()">Open →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="about card glass">
+      <h2>Design Goals</h2>
+      <ul>
+        <li>Clean visual architecture and accessible block diagrams.</li>
+        <li>Interactive diagrams with modal zoom and download.</li>
+        <li>Responsive & modern style design </li>
+      </ul>
+      
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+     Sanchit Vashisth | Renewable Energy Portfolio
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
